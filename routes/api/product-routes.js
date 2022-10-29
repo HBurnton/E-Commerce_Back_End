@@ -33,7 +33,6 @@ router.get('/:id', async (req, res) => {
   });
   if(productData){
     res.status(200).json(productData);
-    return;
   }
   res.status(404).json('Product not found.')
 
@@ -126,7 +125,6 @@ router.delete('/:id', async (req, res) => {
   });
   if(deletedProduct){
     res.status(200).json(deletedProduct);
-    return;
   }
   res.status(404).json('Product not found.')
   }catch(err){

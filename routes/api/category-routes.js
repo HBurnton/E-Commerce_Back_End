@@ -25,7 +25,6 @@ router.get('/:id', async (req, res) => {
     });
     if(categoryData){
       res.status(200).json(categoryData);
-      return;
     }
     res.status(404).json('Category not found.')
 
@@ -78,7 +77,6 @@ router.delete('/:id', async (req, res) => {
   });
   if(deletedCategory){
     res.status(200).json(deletedCategory);
-    return;
   }
   res.status(404).json('Category with this id does not exist;')
   }catch(err){
