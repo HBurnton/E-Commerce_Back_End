@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
       include: {
         model: Product,
         through: ProductTag,
-        as: 'Products',
       }
     });
     res.status(200).json(allTags)
@@ -27,12 +26,12 @@ router.get('/:id', async (req, res) => {
       include: [{
         model: Product,
         through: ProductTag,
-        as: 'Products',
       }]
     })
 
     if (tag) {
       res.status(200).json(tag);
+      return;
     }
     res.status(404).json('Tag with specified ID not found.')
 
@@ -72,6 +71,7 @@ router.put('/:id', async (req, res) => {
 
     if (updatedTagName) {
       res.status(200).json(updatedTagName);
+      return;
     }
     res.status(404).json('No tag with that id exists.')
   }
@@ -89,15 +89,14 @@ router.delete('/:id', (req, res) => {
       }
     })
     if(deletedTag){
-      res.status(200).json(deletedTag)
+      res.status(200).json(deletedTag);
+      return;
     }
     res.status(404).json('No Tag with that id exists')
 
   }catch(err){
     res.status(500).json(err)
   }
-
-  // delete on tag by its `id` value
 });
 
 module.exports = router;
