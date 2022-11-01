@@ -1,4 +1,4 @@
-# Employee Tracker 🤑
+# E-Commerce Backend 🤑
 
 ## Description
 Welcome to the E-Commerce Back end! This backend allows for API requests to be made to specific routes to allow for the creation, updating, reading and deleting of various categories, products, and tags for items of any sort. Something like this could be the backbone for an ecommerce website. This application uses sequelize to work with sql databases to manage columns and information. The challenges that came from working on this project largely stemmed from being sure the routes were being hit properly with the correct information.
