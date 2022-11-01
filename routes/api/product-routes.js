@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// get all products
+//PRODUCT ROUTES
+
+//GET ALL PRODUCT REQUEST
 router.get('/', async (req, res) => {
   try{
     const productData = await Product.findAll({
@@ -17,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// get one product
+// GET ONE PRODUCT REQUEST
 router.get('/:id', async (req, res) => {
   try{
   const productData =  await Product.findByPk(req.params.id, {
@@ -38,16 +40,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// create new product
+// CREATE NEW PRODUCT REQUEST
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -70,7 +64,8 @@ router.post('/', (req, res) => {
     });
 });
 
-// update product
+// UPDATE THIS PRODUCT BY ID REQUEST
+// Due to length of this, comments that were provided by starter code are left for me to refer to
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -112,8 +107,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// DELETE BY ID REQUEST ROUTE
 router.delete('/:id', async (req, res) => {
-  // delete one product by its `id` value
   try{
   const deletedProduct = await Product.destroy({
     where:{
